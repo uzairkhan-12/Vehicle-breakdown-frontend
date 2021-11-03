@@ -10,8 +10,8 @@ function UserTypeList() {
   const history = useHistory();
 
   var serialNo = 0;
-  function LoadData() {
-     fetch("https://localhost:5001/usertype-controller/get-user-type")
+async  function LoadData() {
+     await fetch("https://localhost:5001/usertype-controller/get-user-type")
       .then(response => response.json())
       .then(data => setUserType(data))
   }

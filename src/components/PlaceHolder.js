@@ -4,10 +4,11 @@ import LogIn from './Accounts/LogIn'
 import ForgotPassword from './Accounts/ForgotPassword'
 import AddEditUserType from "./Accounts/AddEditUserType"
 import UserTypeList from './Accounts/UserTypeList'
-// import Home from './Home'
+import Home from './Home'
 import { BrowserRouter as Switch, Route, withRouter } from 'react-router-dom'
 
 import LeftSideBar from './LeftSideBar';
+import ResetPassword from './Accounts/ResetPassword';
 
 function PlaceHolder() {
 
@@ -25,7 +26,7 @@ function PlaceHolder() {
       <Route path="/user-type-list">
         <div className="row">
           <div className="col-md-4"><LeftSideBar /></div>
-          <div className="col-md-8"><UserTypeList /></div>
+          <div className="col-md"><UserTypeList /></div>
         </div>
       </Route>
       <Route path="/add-edit-user-type">
@@ -33,8 +34,6 @@ function PlaceHolder() {
           <div className="col-md-4"><LeftSideBar /></div>
           <div className="col-md-8"><AddEditUserType /></div>
         </div>
-
-
       </Route>
       <Route path="/edit-user-type/:id">
         <div className="row">
@@ -45,7 +44,15 @@ function PlaceHolder() {
       <Route exact path="/">
         <SignUp />
       </Route>
-
+      <Route path="/home">
+        <div className="row">
+        <div className="col-md-4"><LeftSideBar /></div>
+        <div className="col-md"><Home /></div>
+        </div>
+      </Route>
+      <Route path="/reset-password/:key">
+        <ResetPassword />
+      </Route>
     </>
 
   )

@@ -14,7 +14,7 @@ function AddEditUserType() {
     //let {userTypeNameById} = useParams();
     
     
-    async function submitData(params) {
+    async function submitData() {
         if (!handleUserTypeValidation()) {
             setErrorMessage(true)
             return;

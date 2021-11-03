@@ -10,7 +10,9 @@ function Home(props) {
 
   console.log(props.location.pathname)
   return (
-  null
+  <div>
+    <h1 class="display-5 fw-bold">Vehicle Breakdown Assistant</h1>
+  </div>
     // <>
     //   <div className="row">
     //     <TitleBar />

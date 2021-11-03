@@ -22,11 +22,8 @@ function SignUp() {
   const [acitveUsers , setActiveUsers] = useState([''])
   const history = useHistory();
 
-
   async function submitData() {
-    console.log('submit button is working')
     if (!handleNameValidation()) {
-      console.log('name validation')
       return;
     }
     if(!email){
@@ -34,35 +31,26 @@ function SignUp() {
       return;
     }
     if(handleEmailValidation()){
-      console.log('email validation')
       return;
     }
     if (isEmailExist) { 
-      console.log('email exist validation')
       return
     }
     if(isEmailValid){
-      console.log('email valid validation')
       return;
     }
     if (!handelUsersValidation()) {
-      console.log('User type validation')
       return;
     }
     if (!handlePasswordValidation()) {
-      console.log('password validation')
       return;
     }
     if(!handleConfirmPasswordValidation()){
-      console.log('confirm password validation')
       return;
     }
     if(!PasswordConfirmation()){
-      console.log('password validation')
       return
     }
-
-    console.log('after confirm password is working')
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -75,10 +63,14 @@ function SignUp() {
       setGlobalMessage(false)
       ToLogInForm()
     }
-    else {
-      console.log('someting went wrong')
+    if(response.status !==200){
       setGlobalMessage(true)
+      return
     }
+    // else {
+    //   console.log('someting went wrong')
+    //   setGlobalMessage(true)
+    // }
   }
   //requestOptions ka matlab ye ha k jo data men post krny ja rha hn unki type json ha
   async function EmailChecking() {
@@ -98,12 +90,16 @@ function SignUp() {
 useEffect(() => {
   getActiveUsers()
 },[])
+  
   async function getActiveUsers() {
+  
     let response = await fetch('https://localhost:5001/usertype-controller/get-active-users')
     .then(response => response.json())
     .then(data => setActiveUsers(data));
-    console.log(acitveUsers) 
+     console.log(acitveUsers) 
   }
+
+  
 
   const onFirstNameChange = input => {
     setIsNameError(false)
@@ -115,7 +111,6 @@ useEffect(() => {
     setEmail(input.target.value)
      setIsEmailError(false);
      setEmailValid(false)
-    
   }
 
   const onUserChange = input => {
@@ -208,16 +203,10 @@ useEffect(() => {
   const ToLogInForm = () => {
     history.push('/log-in');
   }
-
-
-  //  function validationChecking() {
-  //     if(isNameError){
-
-  //     }
-  //}
+  
   return (
 
-    <div className="row col-md-6 offset-3">
+    <div className="row col-md-9 offset-3">
         <h2>Sign Up Form</h2>
         <form>
           <div className="form-group">

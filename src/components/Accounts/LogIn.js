@@ -73,7 +73,7 @@ function LogIn(){
     }
   
     return(
-        <div className="row col-md-6 offset-3">
+        <div className="row col-md-9 offset-3">
          {/* <div className="row col-md-9"> */}
         <h2>Log In Form</h2>
         <form onSubmit={e=>e.preventDefault()}>
